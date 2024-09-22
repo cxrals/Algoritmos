@@ -17,6 +17,10 @@ public class Practico_2 {
         ejercicio5ArrayOrdenado(vOrdenado);
         ejercicio6ArrayDesordenado(v);
         ejercicio6ArrayOrdenado(vOrdenado);
+        ejercicio7MaxVec(v, 1,5);
+        ejercicio7MinVec(v, 1,5);
+        ejercicio8PosMaxVec(v, 1,5);
+        ejercicio8PosMinVec(v, 1,5);
         
         int[] a ={1,3,6};
         int[] b ={2,4,5,10,11,12,12,13};
@@ -145,12 +149,60 @@ public class Practico_2 {
     // ============================== EJERCICIO 7 ==============================
     // Implementar los métodos del ejercicio anterior, agregando 2 parámetros que 
     // representan desde donde recorremos el array y hasta donde lo hacemos.
-    
+    public static int ejercicio7MaxVec(int[] v, int desde, int hasta) {
+        int maximo = Integer.MIN_VALUE;
+
+        for (int i = desde; i <= hasta; i++) {
+            if (v[i] > maximo) {
+                maximo = v[i];
+            }
+        }
+
+        return maximo;
+    }
+
+    public static int ejercicio7MinVec(int[] v, int desde, int hasta) {
+        int minimo = Integer.MAX_VALUE;
+
+        for (int i = desde; i <= hasta; i++) {
+            if (v[i] < minimo) {
+                minimo = v[i];
+            }
+        }
+
+        return minimo;
+    }
 
     // ============================== EJERCICIO 8 ==============================
     // Implementar los métodos del ejercicio anterior, retornando en este caso la posición donde se
     // encuentra el valor máximo o el valor mínimo.
-    
+    public static int ejercicio8PosMaxVec(int[] v, int desde, int hasta) {
+        int maximo = Integer.MIN_VALUE;
+        int posicion = -1;
+
+        for (int i = desde; i <= hasta; i++) {
+            if (v[i] > maximo) {
+                maximo = v[i];
+                posicion = i;
+            }
+        }
+
+        return posicion;
+    }
+
+    public static int ejercicio8PosMinVec(int[] v, int desde, int hasta) {
+        int minimo = Integer.MAX_VALUE;
+        int posicion = 0;
+
+        for (int i = desde; i <= hasta; i++) {
+            if (v[i] < minimo) {
+                minimo = v[i];
+                posicion = i;
+            }
+        }
+
+        return posicion;
+    }
 
     // ============================== EJERCICIO 9 ==============================
     // Implementar un algoritmo que reciba el vector v y un elemento que debe buscar.
@@ -215,8 +267,62 @@ public class Practico_2 {
             k++;
         }
         
+        while (i < length1) {
+            resultado[k] = v1[i];
+            i++;
+            k++;
+        }
+
+        while (j < length2) {
+            resultado[k] = v2[j];
+            j++;
+            k++;
+        }
         
         return resultado;
     }
+    
+    // otra forma
+    private static int[] intercalarVectoresOrdenados(int[] datos1, int[] datos2) {
+        int[] resp = new int[datos1.length + datos2.length];
+        int i = 0;
+        int j = 0;
 
+        for (int k = 0; k < resp.length; k++) {
+            if (i < datos1.length && j < datos2.length) { //Me quedan datos en los dos vectores
+                if (datos1[i] < datos2[j]) {
+                    resp[k] = datos1[i++];
+                } else {
+                    resp[k] = datos2[j++];
+                }
+            } else if (i < datos1.length) { // Me quedan datos solo en datos1
+                resp[k] = datos1[i++];
+            } else { // Me quedan datos solo en datos2
+                resp[k] = datos2[j++];
+            }
+        }
+        return resp;
+    }
+    
+    // ============================= EJERCICIO 12 ==============================
+    // Implemente una primera versión de algoritmo de ordenamiento que ordene el 
+    // array en forma ascendente utilizando los métodos vistos anteriormente.
+    
+    public static void ejercicio12OrdenarVec(int[] datos) {
+        for (int i = 0; i < datos.length; i++) {
+            int min = Integer.MAX_VALUE;
+            int posMin = -1; // guardar la pos del min para intercambiar
+            
+            for (int j = i; j < datos.length; j++) { // buscar siempre desde i en adelante
+                if(datos[j] < min) {
+                    min = datos[j];
+                    posMin = j;
+                }  
+            }
+            
+            int aux = datos[i]; // guardar el dato almacenado en i
+            datos[i] = datos[posMin]; // sobrescribir con el minimo
+            datos[posMin] = aux; // sobreescribir con dato en i
+        }
+    }
 }
