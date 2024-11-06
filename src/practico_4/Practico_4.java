@@ -2,7 +2,7 @@ package practico_4;
 
 public class Practico_4 {
     public static void main(String[] args) {
-        ListaSimple lista = new ListaSimple();
+        ListaInt lista = new ListaInt();
         
         lista.agregarInicio(3);
         lista.agregarInicio(5);

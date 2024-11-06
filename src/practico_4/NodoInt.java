@@ -1,33 +1,33 @@
 package practico_4;
 
-public class Nodo<T> {
-    private T dato;
-    private Nodo sig;
+public class NodoInt<T> {
+    private int dato;
+    private NodoInt sig;
 
-    public Nodo(T dato) {
+    public NodoInt(int dato) {
         this.dato = dato;
         this.sig = null;
     }
 
     // crear nodo y puntero
-    public Nodo(T dato, Nodo sig) {
+    public NodoInt(int dato, NodoInt sig) {
         this.dato = dato;
         this.sig = sig;
     }
 
-    public T getDato() {
+    public int getDato() {
         return dato;
     }
 
-    public void setDato(T dato) {
+    public void setDato(int dato) {
         this.dato = dato;
     }
 
-    public Nodo getSiguiente() {
+    public NodoInt getSig() {
         return sig;
     }
 
-    public void setSiguiente(Nodo sig) {
+    public void setSig(NodoInt sig) {
         this.sig = sig;
     }
 }

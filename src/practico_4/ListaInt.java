@@ -1,15 +1,15 @@
 package practico_4;
 
-public class ListaSimple implements IListaSimple {
-    private Nodo inicio;
-    private Nodo fin;
+public class ListaInt implements IListaInt {
+    private NodoInt inicio;
+    private NodoInt fin;
     private int cantidadDeElementos;
     
-    public ListaSimple() {
+    public ListaInt() {
         this.inicio = null;
         this.fin = null;
         this.cantidadDeElementos = 0;
-    }
+    } 
     
     @Override
     public boolean esVacia() {
@@ -18,7 +18,7 @@ public class ListaSimple implements IListaSimple {
 
     @Override
     public void agregarInicio(int dato) {
-        inicio = new Nodo(dato, inicio);
+        inicio = new NodoInt(dato, inicio);
         this.cantidadDeElementos++;
         if (this.fin == null) {
             this.fin = inicio;
@@ -30,7 +30,7 @@ public class ListaSimple implements IListaSimple {
         if (this.esVacia()) {
             agregarInicio(dato);
         } else {
-            Nodo nuevo = new Nodo(dato);
+            NodoInt nuevo = new NodoInt(dato);
             this.fin.setSig(nuevo);
             this.fin = nuevo;
             this.cantidadDeElementos++;
@@ -60,7 +60,7 @@ public class ListaSimple implements IListaSimple {
     }
 
     @Override
-    public Nodo obtenerElemento(int dato) {
+    public NodoInt obtenerElemento(int dato) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -86,7 +86,7 @@ public class ListaSimple implements IListaSimple {
     }
 
     @Override
-    public void mostrarREC(Nodo nodo) {
+    public void mostrarREC(NodoInt nodo) {
         if (nodo != null) {
             System.out.print(nodo.getDato() + " ");
             mostrarREC(nodo.getSig());
