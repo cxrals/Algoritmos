@@ -46,7 +46,25 @@ public class ListaInt implements IListaInt {
 
     @Override
     public void eliminarFinal() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (inicio != null) {
+            NodoInt actual = inicio;
+
+            // Si la lista tiene un solo elemento
+            if (inicio.getSig() == null) {
+                int dato = inicio.getDato();
+                inicio = null;
+                cantidadDeElementos--;
+            } else {
+                // Recorremos hasta el penúltimo nodo
+                while (actual.getSig().getSig() != null) {
+                    actual = actual.getSig();
+                }
+
+                int dato = actual.getSig().getDato();
+                actual.setSig(null);
+                cantidadDeElementos--;
+            }
+        }
     }
 
     @Override

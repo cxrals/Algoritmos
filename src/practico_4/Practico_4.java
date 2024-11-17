@@ -10,6 +10,10 @@ public class Practico_4 {
         
         lista.mostrar();
         
+        lista.eliminarFinal();
+        
+        lista.mostrar();
+        
         System.out.println("cantidadElementos: " + lista.cantidadElementos());
     }
     
