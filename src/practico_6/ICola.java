@@ -7,4 +7,5 @@ public interface ICola<T> {
     boolean isEmpty();
     void vaciar();
     int cantidadNodos();
+    boolean esVacia();
 }
