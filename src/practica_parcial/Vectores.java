@@ -224,6 +224,21 @@ public class Vectores {
             return contarPares(arr, izq + 1, der); // Continuar sin sumar si no es par
         }
     }
+    
+    /*
+    contarPares(arr, 1, 5)
+    arr[1]: 166 es par → 1 + contarPares(arr, 2, 5)
+        arr[2]: 32 es par → 1 + contarPares(arr, 3, 5)
+            arr[3]: 73 no es par → contarPares(arr, 4, 5)
+                arr[4]: 8 es par → 1 + contarPares(arr, 5, 5)
+                    arr[5]: 713 no es par → contarPares(arr, 6, 5)
+                        Caso base: izq > der (6 > 5) → 0
+                    Resultado: 0
+                Resultado: 1 + 0 = 1
+            Resultado: 1 + 1 = 2
+        Resultado: 1 + 2 = 3
+    Resultado: 1 + 3 = 3
+    */
 
     
     //==========================================================================================
