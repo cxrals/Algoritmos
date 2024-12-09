@@ -34,6 +34,7 @@ public class Ordenacion {
     }
     
     // ============================== SELECTION SORT ==============================
+    // Encuentra el elemento más pequeño en cada iteración y lo coloca en su posición final.
     public static void selectionSort(int[] vector) {
         int cantidadDeIntercambios = 0;
         int cantidadDeIteraciones = 0;
@@ -58,6 +59,7 @@ public class Ordenacion {
     }
     
     // ============================== BUBBLE SORT ==============================
+    // Compara pares consecutivos y los intercambia si están en el orden incorrecto.
     public static void burbuja(int[] vector) {
         int cantidadDeIntercambios = 0;
         int cantidadDeIteraciones = 0;
@@ -80,6 +82,7 @@ public class Ordenacion {
     }
      
     // ============================== INSERTION SORT ==============================
+    // Inserta cada elemento en su posición correspondiente en un subarray ordenado.
     public static void insertionSort(int[] vector, int desde, int hasta) {
         int aux;
         for (int i = desde + 1; i <= hasta; i++) {
@@ -97,6 +100,7 @@ public class Ordenacion {
     }
     
     // ============================== MERGE SORT ==============================
+    // Divide el array en mitades, las ordena recursivamente y las combina.
     public static void mergeSort(int[] vector) {
         if (vector.length > 1) {
             int mid = vector.length / 2;
@@ -144,6 +148,7 @@ public class Ordenacion {
     }
     
     // ============================== QUICK SORT ==============================
+    // Divide el array usando un pivote y aplica recursión en las subpartes.
     private static void quickSort(int[] vec, int inicio, int fin) {
         if (inicio < fin) {
             int pos = particion(vec, inicio, fin);
@@ -169,4 +174,17 @@ public class Ordenacion {
         vec[i] = pivot;
         return i;
     }
+    
+    
+    /*
+    
+    Algoritmo          Complejidad Promedio   Estabilidad   Método                   Uso de Memoria
+    -----------------------------------------------------------------------------------------------
+    Selection Sort      O(n^2)                No            Comparación directa      Constante
+    Bubble Sort         O(n^2)                Sí            Comparación directa      Constante
+    Insertion Sort      O(n^2)                Sí            Comparación directa      Constante
+    Merge Sort          O(nlogn)              Sí            Divide y vence           Lineal (auxiliar)
+    Quick Sort          O(nlogn)              No            Divide y vence (pivote)  Constante
+    
+    */
 }
