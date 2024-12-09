@@ -188,17 +188,15 @@ public class Vectores {
     
     /*
     Suma(vec,4)
-    vec[4]:30 + suma(vec, 3)
-    vec[3]:25 + suma(vec, 2)
-    vec[2]:19 + suma(vec, 1)
-    vec[1]:14 + suma(vec, 0)
-    vec[0]:10 + suma(vec,-1)
-    suma(vec,-1) = 0
-    vec[0]:10 + 0 = 10
-    vec[1]:14 + 10 = 24
-    vec[2]:19 + 24 = 43
-    vec[3]:25 + 43 = 68
-    vec[4]:30 + 68 = 98
+    vec[4]: 30 + suma(vec, 3)
+    vec[3]: 25 + suma(vec, 2)
+    vec[2]: 19 + suma(vec, 1)
+    vec[1]: 14 + suma(vec, 0)
+    vec[0]: 10 (caso base)
+    vec[1]: 14 + 10 = 24
+    vec[2]: 19 + 24 = 43
+    vec[3]: 25 + 43 = 68
+    vec[4]: 30 + 68 = 98
     Suma(vec,4) = 98
     */
     
