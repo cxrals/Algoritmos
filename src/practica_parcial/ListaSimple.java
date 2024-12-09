@@ -1,5 +1,6 @@
 package practica_parcial;
 import practico_4.NodoInt;
+import practico_6.Cola;
 import practico_6.Pila;
 
 
@@ -202,6 +203,60 @@ public class ListaSimple {
         return -1; // Si llegamos aquí, el número no está en la lista
     }
     //==========================================================================================
+    // Parcial 2024-07-25 mat
+    //==========================================================================================
+    /*
+    Dado una lista simplemente enlazada de nodos con valores enteros positivos, una cantidad C y una cola
+    vacía:
+    a) Implemente un algoritmo recursivo que coloque los primeros C elementos de la lista en la cola, de
+    forma de que el primer elemento de la lista quede en el frente de la cola. Defina las pre y post
+    condiciones. (10 ptos). Se sumen disponibles los métodos gets y sets, así como todas las
+    operaciones del TAD Cola (frente(), encolar(), desencolar(), esVacia())
+     Ejemplo para un valor C = 3
+    Lista: 23 -> 11 -> 20 -> 5 -> 14
+    Cola: 20 -> 11 -> 23
+    */
+    public static void moverElementosACola(ListaSimple lista, NodoInt nodo, Cola cola, int c) {
+        // Caso base: cuando hemos procesado los C elementos
+        if (c == 0 || nodo == null) {
+            return;
+        }
+
+        // Llamada recursiva hacia el siguiente nodo
+        moverElementosACola(lista, nodo.getSig(), cola, c - 1);
+
+        // Operación en retorno: encolamos el valor actual
+        cola.enqueue(nodo.getDato());
+    }
+    /*
+    Dada una implementación de un TAD Lista con nodos simplemente enlazados ordenados en forma
+    ascendente, con puntero al inicio y puntero al final como se muestra a continuación:
+    3 -> 5 -> 45 -> 56 -> 70
+    a) Implemente una nueva operación en el TAD que, dado dos posiciones, retorne una nueva lista con
+    los elementos que se encuentran dentro de esas dos posiciones (se asumen las posiciones
+    correctas). Ejemplo: para una pos1:2 y una pos2:4, debería retornar una sublista con: 5->45->56
+    Firma sugerida: public Lista subLista(int pos1, int pos2) (8 ptos)
+    b) Implemente una nueva operación en el TAD que, dado una vector de enteros y una posición de la
+    lista, inserta desde dicha posición todos los elementos del vector.
+    Ejemplo: para un vector [7,11] y una posición: 2, la lista quedaría con: 3->7->11->5->45->56->70
+    Firma sugerida: public void insertarVectorEnLista(int v[], int pos) (7 ptos)
+    */
+    public ListaSimple subLista(int pos1, int pos2) {
+        ListaSimple subLista = new ListaSimple();
+        NodoInt actual = inicio;
+        int index = 1; // Las posiciones empiezan desde 1
+
+        while (actual != null && index <= pos2) {
+            if (index >= pos1) {
+                subLista.agregarAlFinal(actual.getDato());
+            }
+            actual = actual.getSig();
+            index++;
+        }
+
+        return subLista;
+    }
+    //==========================================================================================
     // Examen 2024-07-31
     //==========================================================================================
     /*
@@ -304,8 +359,8 @@ public class ListaSimple {
     b.  Realice el diagrama de llamadas para el ejemplo anterior
     */
     public void mostrarUltimosNImpares (ListaSimple L, int n){
-        //int totalNodosImpares = contarTotalNodosImpares(L.getInicio())
-        //mostrarUltimosNImpares (L.getInicio(), totalNodosImpares - n);
+        int totalNodosImpares = contarTotalNodosImpares(L.inicio);
+        mostrarUltimosNImpares(L.inicio, totalNodosImpares - n);
     }
     
     public void mostrarUltimosNImpares(NodoInt n, int pos) {
@@ -444,5 +499,9 @@ public class ListaSimple {
             return p;
         }
         return null;
+    }
+
+    private int contarTotalNodosImpares(NodoInt inicio) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
